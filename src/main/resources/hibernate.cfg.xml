@@ -1,0 +1,49 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate ConfigurationDTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--Database connectionsettings-->
+        <property name="connection.driver_class">org.h2.Driver</property>
+<!--        <property name="connection.url">jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE</property>-->
+        <property name="connection.url">jdbc:h2:~/db-test.h2</property>
+        <property name="connection.username">sa</property>
+        <property name="connection.password">sa</property>
+
+        <!-- JDBC connectionpool(usethe built-in) -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL dialect-->
+        <property name="dialect">org.hibernate.dialect.H2Dialect</property>
+
+        <!-- Disablethe second-levelcache  -->
+        <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+
+        <!-- Echo allexecutedSQL to stdout-->
+        <property name="show_sql">true</property>
+
+        <!-- Drop and re-createthe databaseschemaon startup -->
+        <property name="hbm2ddl.auto">create</property>
+
+        <!-- EnableHibernate statsin the logs-->
+        <property name="hibernate.generate_statistics">true</property>
+
+        <!-- Full namesof the annotatedentityclass-->
+<!--        <mapping class="mt.mas.hibernate.Movie"/>-->
+<!--        <mapping class="mt.mas.hibernate.Actor"/>-->
+        <mapping class="Asystent"/>
+        <mapping class="Badanie"/>
+        <mapping class="Choroba"/>
+        <mapping class="Lek"/>
+        <mapping class="Osoba"/>
+        <mapping class="PracownikAdministracyjny"/>
+        <mapping class="Weterynarz"/>
+        <mapping class="Wizyta"/>
+        <mapping class="Wizyta$Notatka"/>
+        <mapping class="WlascicielZwierzecia"/>
+        <mapping class="ZabiegRehabilitacyjny"/>
+        <mapping class="Zwierze"/>
+        <mapping class="Zwierze$HistoriaLeczenia"/>
+
+    </session-factory>
+</hibernate-configuration>
