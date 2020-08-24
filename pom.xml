@@ -32,5 +32,15 @@
             <version>1.4.200</version>
             <scope>runtime</scope> <!-- Here you are saying this dependency is needed at runtime, not just at testing -->
         </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>2.2</version>
+        </dependency>
     </dependencies>
 </project>
