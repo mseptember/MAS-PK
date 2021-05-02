@@ -1,1 +1,15 @@
-Sraka.class
+Zwierze.class
+Choroba.class
+Osoba.class
+Badanie.class
+Wizyta$Notatka.class
+Wizyta.class
+PracownikAdministracyjny.class
+WlascicielZwierzecia.class
+ZabiegRehabilitacyjny.class
+Weterynarz.class
+Main.class
+Asystent.class
+MainController.class
+Lek.class
+Zwierze$HistoriaLeczenia.class

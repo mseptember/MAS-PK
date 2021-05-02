@@ -1,5 +1,14 @@
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.service.Service;
 
+import javax.inject.Inject;
 import javax.persistence.*;
 import java.util.*;
 
@@ -127,17 +136,38 @@ public class Zwierze {
     }
 
     // TODO wyswietlListeZwierzat()
-    /*public static List<Zwierze> wyswietlListeZwierzat() {
-        for (Zwierze z : ) {
+    public List<Zwierze> wyswietlListeZwierzat(SessionFactory sessionFactory) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        List<Zwierze> lz = new ArrayList<>();
 
+        try {
+            tx = session.beginTransaction();
+            List listaZwierzat = session.createQuery("FROM Zwierze").list();
+            for (Iterator iterator = listaZwierzat.iterator(); iterator.hasNext(); ) {
+                Zwierze zwierze = (Zwierze) iterator.next();
+                lz.add(zwierze);
+                System.out.print("Imie: " + zwierze.getImie()); //TODO do wywalenia1
+                System.out.print("  Płeć: " + zwierze.getPlec()); //TODO do wywalenia2
+            }
+            tx.commit();
+        } catch (HibernateException ex) {
+            if (tx != null) {
+                tx.rollback();
+                ex.printStackTrace();
+            }
+        } finally {
+            session.close();
         }
-    }*/
+        return lz;
+    }
 
     // TODO wyswietlChoroby(ID zwierzecia)
 
     // TODO dodajZwierze() -> klasowa
     // TODO wyswietlChoroby()
     // TODO przypiszChorobe(ID choroby)
+    // TODO wyswietlSzczegolyZwierzecia(ID zwierzecia)
 
     // TODO KLASA WEW. HistoriaLeczenia
     @Entity (name = "HistoriaLeczenia")
